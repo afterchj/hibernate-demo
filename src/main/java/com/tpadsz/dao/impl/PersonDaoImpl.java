@@ -13,7 +13,7 @@ public class PersonDaoImpl extends BaseDaoImpl<Person> implements PersonDao{
 		List<Person> list=daoImpl.selectAll();
 		System.out.println("list是否为空："+list.size());
 		for (Person per:list) {
-			System.out.println("name="+per.getUsername());
+			System.out.println("name="+per.getName());
 		}
 	}
 }

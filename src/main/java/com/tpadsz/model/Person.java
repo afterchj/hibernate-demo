@@ -1,34 +1,66 @@
 package com.tpadsz.model;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "t_person")
 public class Person {
-	private int id;
+    private int id;
 
-	private String username;
+    private String name;
 
-	private int age;
+    private IDCard idCard;
 
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Person() {
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public Person(int id, String name, IDCard idCard) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.idCard = idCard;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public Person(String name, IDCard idCard) {
+        super();
+        this.name = name;
+        this.idCard = idCard;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public Person(String name) {
+        super();
+        this.name = name;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
+    @Id
+    @GeneratedValue
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 有IDCard的person字段来维护关系
+     */
+    @OneToOne(mappedBy = "person")
+    public IDCard getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(IDCard idCard) {
+        this.idCard = idCard;
+    }
 }

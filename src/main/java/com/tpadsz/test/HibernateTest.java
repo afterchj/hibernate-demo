@@ -7,10 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class HibernateTest {
 
@@ -26,13 +23,14 @@ public class HibernateTest {
         Transaction tx = session.beginTransaction();
         //我们先添加一方，再添加多方
         ClassRoom c = new ClassRoom();
-        c.setName("梁山班");
-        Student stu1 = new Student("宋江", "001", c);
-        Student stu2 = new Student("吴用", "003", c);
-//        session.save(c);
+        c.setName("终极一班");
+        Student stu1 = new Student("汪大东", "002", c);
+        Student stu2 = new Student("king", "004", c);
+        c.setStudents(new HashSet<Student>(Arrays.asList(stu2,stu1)));
+        session.save(c);
 //        session.save(stu1);
 //        session.save(stu2);
-//        tx.commit();
+        tx.commit();
 
         List<Student> list = session.createQuery("from Student").list();
         for (Student student : list) {

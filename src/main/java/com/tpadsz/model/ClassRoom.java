@@ -41,7 +41,7 @@ public class ClassRoom {
      * 则告诉hibernate，它们两者间的关系由一方在多方的属性classRoom
      * 这个多方的属性字段来维护
      */
-    @OneToMany(mappedBy = "classRoom")
+    @OneToMany(mappedBy = "classRoom",cascade = CascadeType.ALL)
     public Set<Student> getStudents() {
         return students;
     }

@@ -41,7 +41,7 @@ public class Student {
      * 使用Many-to-one来说明Student与ClassRoom是多对一的关系
      * JoinColumn说明外键，name属性指定外键的列名
      */
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinColumn(name = "cid")
     public ClassRoom getClassRoom() {
         return classRoom;
